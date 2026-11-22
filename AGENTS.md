@@ -62,3 +62,12 @@ affects which guides agents should read, and remove or revise obsolete guidance.
 Before finishing, inspect the diff and run the checks appropriate to the change.
 For documentation-only changes, verify content, links, and formatting; runtime
 tests are unnecessary. Report the checks actually run and any blockers.
+
+## Ruflo Orchestration Policy
+
+- Ruflo is optional for development and must not be invoked for routine single-agent tasks. Use it only for explicitly owner-authorized multi-agent work.
+- Maximum two concurrent executors in total, including the primary Codex agent; no nested swarms or recursive agent spawning. One review cycle per implementation stage; stop at the approved scope and report blockers instead of unbounded retries.
+- Use a version-pinned, reviewed Ruflo installation with a minimal MCP tool allowlist. Do not initialize project hooks, daemons, federation or additional services implicitly. Ruflo agent registration is not evidence of independent execution or review.
+- No autonomous production deployment, live equipment actions, privilege escalation, or bypass of approval/security gates. All existing repository rules, more restrictive limits and data-access policies take precedence.
+- Repository documentation and versioned Git history remain the authoritative project memory. Ruflo memory is supplementary only; never store credentials, tokens, sensitive telemetry, private records or other restricted data in it, and do not transmit repository data to external services without authorization.
+- Record actual validation, decisions, remaining blockers and the next step in the existing project handoff workflow; do not claim tests or reviews that were not performed.
